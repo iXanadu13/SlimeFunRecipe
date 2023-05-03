@@ -1,0 +1,20 @@
+#File version, do not edit
+version: 1.0.0
+
+#[English/Chinese]
+lang: English
+
+#[true/false]
+enable: true
+
+#Note:
+#(1) All the change about recipes CANNOT work before you restart the server, although the recipe seemingly change in slime book.
+#(2) Because of slimefun mechanics, these RecipeType cannot be used currently: MultiBlock,Mob Drop,Interact.
+#(3) If you choose "ancient_altar", please make sure the recipe has NO empty slot, or this recipe will be invalid.
+
+#Chinese version:
+
+#备注:
+#(1)所有对配方的修改，必须在重启服务器后才能生效，未重启前虽然粘液书上已修改，但实际上无效果
+#(2)由于slimefun内部机制，MultiBlock(多方块结构),Mob Drop(生物掉落),Interact(右键交互)这几种合成类型目前不能使用
+#(3)如果你选择了"ancient_altar"(远古祭坛)，合成配方的所有格子都不能为空，否则配方无法生效

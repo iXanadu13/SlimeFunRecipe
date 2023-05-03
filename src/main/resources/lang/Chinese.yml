@@ -1,0 +1,32 @@
+version: 1.0.0
+plugin:
+  prefix: '§7[§eSlimefunRecipe§7]§r '
+  file_save_error: '文件 {file_name} 保存失败!'
+  fun_not_enable: '配方修改已禁用，你可以在config.yml中启用它'
+  data_parsing_error: '文件 data.yml 格式错误! Key: '
+  recipes_loaded: '已加载%d个修改的配方.'
+  checking_update: '正在为您检查更新...'
+  check_update_fail: '检查更新失败，请确认您的网络配置'
+  out_of_date: '您正在使用的插件版本: v{0}\n检测到新版插件v{1}已发布，请尽快更新\n下载地址：https://www.spigotmc.org/resources/slimefunrecipe.109617/'
+  up_to_date: '您正在使用最新版的插件(v{1})...'
+command:
+  no_permission: "§4你没有使用该命令的权限"
+  reload_config: '§a配置文件已重载'
+  only_player: '§c这个指令只能由玩家执行'
+  item_error: '§c错误：你需要拿着Slimefun物品'
+gui:
+  title: '§b正在编辑粘液物品: %item%'
+  button_verify: '§a确定'
+  button_cancel: '§c取消'
+  empty_recipe: '§c合成配方不能全为空!'
+  recipe_saved: '§a配方修改成功,§c重启服务器后§a将生效'
+  recipe_cancel: '§c配方修改取消!'
+  RecipeType_null_name: '§c无配方'
+  RecipeType_null_lore: "§4不可合成"
+item:
+  not_slimefun: '无法解析粘液物品: %item%'
+  unknown_recipe_type: '未知的合成类型,位于物品: %item%'
+
+CommandTips:
+  - '§e/sfr reload §a- 重载配置文件'
+  - '§e/sfr edit §a- 修改粘液配方'

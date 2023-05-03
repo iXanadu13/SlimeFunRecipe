@@ -1,0 +1,15 @@
+name: SlimeFunRecipe
+version: 1.0.0
+main: xanadu.slimefunrecipe.Main
+api-version: 1.13
+depend: [Slimefun]
+commands:
+  slimefunrecipe:
+    description: 'Edit the recipe of Slimefun items'
+    aliases: [sfr]
+    permission: ''
+    permission-message: "§4I'm Sorry,but you do not have permission to do that."
+permissions:
+  slimefunrecipe.admin:
+    description: 'Use all commands of SlimefunRecipe'
+    default: op

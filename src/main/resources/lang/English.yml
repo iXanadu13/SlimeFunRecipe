@@ -1,0 +1,32 @@
+version: 1.0.0
+plugin:
+  prefix: '§7[§eSlimefunRecipe§7]§r '
+  file_save_error: 'File {file_name} save error!'
+  fun_not_enable: 'Function has been disabled, you can enable it in config.yml'
+  data_parsing_error: 'File data.yml parsing error! Key: '
+  recipes_loaded: 'Successfully load %d recipe(s).'
+  checking_update: 'Checking update...'
+  check_update_fail: 'Checking update fail. Please check your network settings.'
+  out_of_date: 'Your version: v{0}\nNew version: v{1}\nDownload Link: https://www.spigotmc.org/resources/slimefunrecipe.109617/'
+  up_to_date: 'You are using the latest version (v{1})...'
+command:
+  no_permission: "§4I'm Sorry,but you do not have permission to do that."
+  reload_config: '§aConfig reload complete.'
+  only_player: '§cOnly player can do this.'
+  item_error: '§cYou must hold slimefun items when use this command'
+gui:
+  title: '§bEdit Recipe: %item%'
+  button_verify: '§aVerify'
+  button_cancel: '§cCancel'
+  empty_recipe: '§cThe recipe cannot be empty!'
+  recipe_saved: '§aNew recipe has been saved. §cYou need to restart the server to apply the change!'
+  recipe_cancel: '§cYour changes are unsaved.'
+  RecipeType_null_name: '§cNo recipe'
+  RecipeType_null_lore: "§4Can't be crafted"
+item:
+  not_slimefun: 'Not found this Slimefun item: %item%'
+  unknown_recipe_type: 'Unknown recipe type! item: %item%'
+
+CommandTips:
+  - '§e/sfr reload §a- reload the config'
+  - '§e/sfr edit §a- edit slimefun item recipe'
