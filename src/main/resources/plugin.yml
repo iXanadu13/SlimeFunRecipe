@@ -1,8 +1,17 @@
 name: SlimeFunRecipe
-version: 1.0.0
-main: xanadu.slimefunrecipe.Main
+version: 1.1.0
+main: pers.xanadu.slimefunrecipe.Main
 api-version: 1.13
-depend: [Slimefun]
+depend:
+  - Slimefun
+softdepend:
+  - DynaTech
+  - ExoticGarden
+  - FlowerPower
+  - FluffyMachines
+  - InfinityExpansion
+  - SoulJars
+  - TranscEndence
 commands:
   slimefunrecipe:
     description: 'Edit the recipe of Slimefun items'
@@ -13,3 +22,5 @@ permissions:
   slimefunrecipe.admin:
     description: 'Use all commands of SlimefunRecipe'
     default: op
+
+website: https://www.spigotmc.org/resources/slimefunrecipe.109617/

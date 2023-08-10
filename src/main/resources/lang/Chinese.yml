@@ -1,4 +1,4 @@
-version: 1.0.0
+version: 1.1.0
 plugin:
   prefix: '§7[§eSlimefunRecipe§7]§r '
   file_save_error: '文件 {file_name} 保存失败!'
@@ -9,16 +9,17 @@ plugin:
   check_update_fail: '检查更新失败，请确认您的网络配置'
   out_of_date: '您正在使用的插件版本: v{0}\n检测到新版插件v{1}已发布，请尽快更新\n下载地址：https://www.spigotmc.org/resources/slimefunrecipe.109617/'
   up_to_date: '您正在使用最新版的插件(v{1})...'
+  wrong_file_version: '{file_name} 版本与插件不对应，请更新文件'
 command:
   no_permission: "§4你没有使用该命令的权限"
   reload_config: '§a配置文件已重载'
   only_player: '§c这个指令只能由玩家执行'
   item_error: '§c错误：你需要拿着Slimefun物品'
+  unknown_item_size: '§c未知的物品配方格式！'
 gui:
   title: '§b正在编辑粘液物品: %item%'
   button_verify: '§a确定'
   button_cancel: '§c取消'
-  empty_recipe: '§c合成配方不能全为空!'
   recipe_saved: '§a配方修改成功,§c重启服务器后§a将生效'
   recipe_cancel: '§c配方修改取消!'
   RecipeType_null_name: '§c无配方'
