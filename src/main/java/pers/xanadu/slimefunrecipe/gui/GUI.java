@@ -18,12 +18,19 @@ public abstract class GUI extends ChestMenu {
     protected int index;
     protected int chosen;
     protected int capacity;
-    protected GUI(String title) {
+    protected GUIType type;
+    protected String input;
+    protected GUI(String title,GUIType type){
         super(title);
         index=1;
         chosen=-1;
         capacity=0;
+        this.type = type;
+        input = title;
         initVector();
+    }
+    protected GUI(String title) {
+        this(title,GUIType.edit);
     }
     public void initVector(){
         items.clear();
@@ -38,6 +45,12 @@ public abstract class GUI extends ChestMenu {
     }
     public int getCapacity(){
         return capacity;
+    }
+    public GUIType getType(){
+        return type;
+    }
+    public String getTitle(){
+        return input;
     }
     public void setPage(final Player p, int to){
         if(to<1||to>getSize()) return;
@@ -80,4 +93,7 @@ public abstract class GUI extends ChestMenu {
     public abstract int getItemShowIndex();
     public abstract int getPrevPageButtonIndex();
     public abstract int getNextPageButtonIndex();
+    public abstract int[] getBlack_border();
+    public abstract int[] getGray_border();
+    public abstract int[] getItemSlots();
 }

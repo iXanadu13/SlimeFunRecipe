@@ -1,5 +1,5 @@
 name: SlimeFunRecipe
-version: 1.1.0
+version: 1.2.0
 main: pers.xanadu.slimefunrecipe.Main
 api-version: 1.13
 depend:
@@ -22,5 +22,8 @@ permissions:
   slimefunrecipe.admin:
     description: 'Use all commands of SlimefunRecipe'
     default: op
+  slimefunrecipe.view:
+    description: 'View recipes'
+    default: true
 
 website: https://www.spigotmc.org/resources/slimefunrecipe.109617/

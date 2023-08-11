@@ -1,8 +1,7 @@
 package pers.xanadu.slimefunrecipe.manager;
 
-import io.github.mooy1.infinityexpansion.infinitylib.machines.MachineRecipeType;
 import io.github.mooy1.infinityexpansion.items.blocks.InfinityWorkbench;
-import io.github.mooy1.infinityexpansion.items.mobdata.MobData;
+import io.github.mooy1.infinityexpansion.items.mobdata.MobDataInfuser;
 import io.github.mooy1.infinityexpansion.items.storage.StorageForge;
 import io.github.thebusybiscuit.exoticgarden.ExoticGardenRecipeTypes;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
@@ -18,6 +17,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import pers.xanadu.slimefunrecipe.Main;
 import pers.xanadu.slimefunrecipe.SlimeRecipeType;
 
+import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.Type;
@@ -25,6 +25,8 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Vector;
+
+import static pers.xanadu.slimefunrecipe.Main.plugin;
 
 public class ItemManager {
     public static final HashMap<SlimeRecipeType,RecipeType> mp = new HashMap<>();
@@ -50,6 +52,27 @@ public class ItemManager {
         }
         return true;
     }
+    public static boolean addRecipe(final ItemStack[] input,final ItemStack result,final RecipeType type,final String id,final String file_name){
+        File file = new File(plugin.getDataFolder(), "recipe/add/"+file_name);
+        YamlConfiguration yml = YamlConfiguration.loadConfiguration(file);
+        ConfigurationSection section = yml.createSection(id);
+        section.set("RecipeType",type.getKey().getKey());
+        section.set("size",input.length);
+        section.set("input_data_type","default");
+        section.set("output_data_type","default");
+        ConfigurationSection input_data = section.createSection("input");
+        for(int i=0;i<input.length;i++){
+            input_data.set(String.valueOf(i+1),input[i]);
+        }
+        section.set("output",result);
+        try {
+            yml.save(file);
+        }catch (IOException e){
+            return false;
+        }
+        return true;
+    }
+
     public static void addLore(final ItemStack item,final String lore){
         ItemMeta meta = item.getItemMeta();
         if(meta != null) {
@@ -68,21 +91,7 @@ public class ItemManager {
         if(item == null || item.getType() == Material.AIR) return true;
         return false;
     }
-    public static void setRecipe(final SlimefunItem si,final ItemStack[] recipe){
-        if(recipe.length == 9){
-            si.setRecipe(recipe);
-        }
-        else{
-            try {
-                Class<?> clazz = Class.forName("io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem");
-                Field si_recipe = clazz.getDeclaredField("recipe");
-                si_recipe.setAccessible(true);
-                si_recipe.set(si,recipe);
-            } catch (ReflectiveOperationException e) {
-                throw new RuntimeException(e);
-            }
-        }
-    }
+
     public static RecipeType getByName(final String str){
         SlimeRecipeType slimeRecipeType = SlimeRecipeType.getByName(str);
         if(slimeRecipeType == SlimeRecipeType._unknown) return null;
@@ -91,19 +100,26 @@ public class ItemManager {
     public static void initRecipeType(){
         recipeTypes.clear();
         registerAll(RecipeType.class);
-        if(Bukkit.getPluginManager().getPlugin("InfinityExpansion")!=null){
-            registerRecipeType(SlimeRecipeType.infinity_forge,InfinityWorkbench.TYPE);
-            final RecipeType mob_data_infuser = new MachineRecipeType("mob_data_infuser", MobData.INFUSER);
-            registerRecipeType(SlimeRecipeType.mob_data_infuser,mob_data_infuser);
-            registerRecipeType(SlimeRecipeType.storage_forge,StorageForge.TYPE);
+        if(Bukkit.getPluginManager().isPluginEnabled("InfinityExpansion")){
+            try{
+                Field infinity_forge = InfinityWorkbench.class.getField("TYPE");
+                registerRecipeType(SlimeRecipeType.infinity_forge, (RecipeType) infinity_forge.get(null));
+                Field mob_data_infuser = MobDataInfuser.class.getDeclaredField("TYPE");
+                mob_data_infuser.setAccessible(true);
+                registerRecipeType(SlimeRecipeType.mob_data_infuser,(RecipeType) mob_data_infuser.get(null));
+                Field storage_forge = StorageForge.class.getField("TYPE");
+                registerRecipeType(SlimeRecipeType.storage_forge, (RecipeType) storage_forge.get(null));
+            }catch (ReflectiveOperationException e){
+                e.printStackTrace();
+            }
         }
-        if(Bukkit.getPluginManager().getPlugin("ExoticGarden")!=null){
+        if(Bukkit.getPluginManager().isPluginEnabled("ExoticGarden")){
             registerAll(ExoticGardenRecipeTypes.class);
         }
-        if(Bukkit.getPluginManager().getPlugin("TranscEndence")!=null){
+        if(Bukkit.getPluginManager().isPluginEnabled("TranscEndence")){
             registerAll(TERecipeType.class);
         }
-        if(Bukkit.getPluginManager().getPlugin("FlowerPower")!=null){
+        if(Bukkit.getPluginManager().isPluginEnabled("FlowerPower")){
             registerRecipeType(SlimeRecipeType.magic_basin, MagicBasin.BASIN_RECIPE);
         }
     }

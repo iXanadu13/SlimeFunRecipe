@@ -1,5 +1,5 @@
 #File version, do not edit
-version: 1.1.0
+version: 1.2.0
 
 #[English/Chinese]
 lang: English
@@ -7,6 +7,8 @@ lang: English
 #[true/false]
 enable: true
 
+#[true/false]
+recipe_view_tab: true
 #Note:
 #(1) All the change about recipes CANNOT work before you restart the server, although the recipe seemingly change in slime book.
 #(2) Because of slimefun mechanics, these RecipeType cannot be used currently: MultiBlock,Mob Drop,Interact.

@@ -10,6 +10,7 @@ public class Config {
     public static String version;
     public static String lang;
     public static boolean enable;
+    public static boolean recipe_view_tab;
 
     public static void reload(FileConfiguration file){
         Field[] fields = Config.class.getFields();

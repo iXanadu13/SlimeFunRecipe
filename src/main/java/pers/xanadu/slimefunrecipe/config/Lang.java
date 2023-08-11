@@ -20,12 +20,17 @@ public class Lang {
     public static String plugin_out_of_date;
     public static String plugin_up_to_date;
     public static String plugin_wrong_file_version;
+    public static String plugin_read_file;
     public static String command_no_permission;
     public static String command_reload_config;
     public static String command_only_player;
     public static String command_item_error;
     public static String command_unknown_item_size;
+    public static String command_recipe_type_absence;
+    public static String command_key_conflict;
+    public static String command_recipe_not_found;
     public static String gui_title;
+    public static String gui_title_view;
     public static String gui_button_verify;
     public static String gui_button_cancel;
     public static String gui_recipe_cancel;

@@ -3,6 +3,10 @@ package pers.xanadu.slimefunrecipe.gui;
 import pers.xanadu.slimefunrecipe.utils.GuiUtils;
 
 public class GUI3x3 extends GUI{
+    public GUI3x3(String title,GUIType type) {
+        super(title,type);
+        capacity = 9;
+    }
     public GUI3x3(String title) {
         super(title);
         capacity = 9;
@@ -54,5 +58,14 @@ public class GUI3x3 extends GUI{
     }
     public int getNextPageButtonIndex(){
         return 34;
+    }
+    public int[] getBlack_border(){
+        return GuiUtils.black_border_3x3;
+    }
+    public int[] getGray_border(){
+        return GuiUtils.gray_border_3x3;
+    }
+    public int[] getItemSlots(){
+        return GuiUtils.item_slot_3x3;
     }
 }
