@@ -53,7 +53,7 @@ public abstract class GUI extends ChestMenu {
         return input;
     }
     public void setPage(final Player p, int to){
-        if(to<1||to>getSize()) return;
+        if(to<1||to>getRowSize()) return;
         index=to;
         fillPagedItems(to);
         updateButton(p,to);
@@ -65,7 +65,7 @@ public abstract class GUI extends ChestMenu {
         updateButton(p,index);
     }
     public void next(final Player p){
-        if(index==getSize()) return;
+        if(index==getRowSize()) return;
         ++index;
         fillPagedItems(index);
         updateButton(p,index);
@@ -83,10 +83,10 @@ public abstract class GUI extends ChestMenu {
 
     }
     protected void updateButton(final Player p, int page){
-        this.replaceExistingItem(getPrevPageButtonIndex(), ChestMenuUtils.getPreviousButton(p,page,getSize()));
-        this.replaceExistingItem(getNextPageButtonIndex(), ChestMenuUtils.getNextButton(p,page,getSize()));
+        this.replaceExistingItem(getPrevPageButtonIndex(), ChestMenuUtils.getPreviousButton(p,page,getRowSize()));
+        this.replaceExistingItem(getNextPageButtonIndex(), ChestMenuUtils.getNextButton(p,page,getRowSize()));
     }
-    public abstract int getSize();
+    public abstract int getRowSize();
     public abstract int getCancelButtonIndex();
     public abstract int getVerifyButtonIndex();
     public abstract int getMachineIndex();

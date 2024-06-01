@@ -38,7 +38,7 @@ public class GUI3x3 extends GUI{
             this.replaceExistingItem(i+45,j==chosen? GuiUtils.getItem_chosen() : GuiUtils.getItem_not_chosen());
         }
     }
-    public int getSize(){
+    public int getRowSize(){
         return (items.size()-1)/9+1;
     }
     public int getCancelButtonIndex(){
